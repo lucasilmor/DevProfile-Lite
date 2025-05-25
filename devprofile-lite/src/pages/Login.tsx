@@ -2,6 +2,7 @@ import { useState } from "react";
 import { auth } from "../services/firebase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
+import FormInput from "../components/FormInput";
 
 export default function Login() {
   const [email, setEmail] = useState("");
@@ -28,22 +29,19 @@ export default function Login() {
         </div>
 
         <form onSubmit={handleLogin} className="space-y-4">
-          <input
+          <FormInput
             type="email"
             placeholder="Email"
             value={email}
-            onChange={e => setEmail(e.target.value)}
-            className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-blue-300"
-            required
+            onChange={(e) => setEmail(e.target.value)}
           />
-          <input
+          <FormInput
             type="password"
             placeholder="Senha"
             value={senha}
-            onChange={e => setSenha(e.target.value)}
-            className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-blue-300"
-            required
+            onChange={(e) => setSenha(e.target.value)}
           />
+
           {erro && <p className="text-red-500 text-sm">{erro}</p>}
 
           <button

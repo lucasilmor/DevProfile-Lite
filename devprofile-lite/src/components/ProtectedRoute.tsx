@@ -9,7 +9,7 @@ export default function ProtectedRoute({ children }: { children: JSX.Element }) 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
       if (!user) {
-        navigate("/login");
+        navigate("/");
       } else {
         setLoading(false);
       }

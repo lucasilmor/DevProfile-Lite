@@ -2,6 +2,7 @@ import { useState } from "react";
 import { auth } from "../services/firebase";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
+import FormInput from "../components/FormInput";
 
 export default function Register() {
   const [email, setEmail] = useState("");
@@ -36,24 +37,18 @@ export default function Register() {
         </div>
 
         <form onSubmit={handleRegister} className="space-y-4">
-          <input
+          <FormInput
             type="email"
             placeholder="Email"
             value={email}
-            onChange={e => setEmail(e.target.value)}
-            className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-green-300"
-            required
+            onChange={(e) => setEmail(e.target.value)}
           />
-          <input
+          <FormInput
             type="password"
             placeholder="Senha"
             value={senha}
-            onChange={e => setSenha(e.target.value)}
-            className="w-full border border-gray-300 p-2 rounded focus:outline-none focus:ring focus:ring-green-300"
-            required
+            onChange={(e) => setSenha(e.target.value)}
           />
-          {erro && <p className="text-red-500 text-sm">{erro}</p>}
-
           <button
             type="submit"
             className="w-full bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded transition duration-200"
